@@ -1,0 +1,15 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Generated preprocessing cache; rebuild with: python main.py prepare
+data/processed/
+
+# Local editor and environment files
+.venv/
+.env
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db

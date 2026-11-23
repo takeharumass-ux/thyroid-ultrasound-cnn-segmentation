@@ -1,0 +1,62 @@
+[
+  {
+    "name": "A_baseline",
+    "best_epoch": 16,
+    "validation_dice": 0.6927663087844849,
+    "test_samples": 614,
+    "dice": 0.6962231653107327,
+    "iou": 0.5915379060461893,
+    "recall": 0.7743574221950655,
+    "precision": 0.707667559197215,
+    "pixel_accuracy": 0.9544771257848615,
+    "dice_std": 0.27510466584862936,
+    "iou_std": 0.27774093438306485,
+    "dice_image_bootstrap_95ci": [
+      0.6760041087284132,
+      0.716356933904707
+    ],
+    "elapsed_training_seconds": 699.6893042999945,
+    "epochs": 30,
+    "threshold": 0.5
+  },
+  {
+    "name": "B_augmentation",
+    "best_epoch": 30,
+    "validation_dice": 0.7436277270317078,
+    "test_samples": 614,
+    "dice": 0.7542434229700544,
+    "iou": 0.6535751575540375,
+    "recall": 0.7847585737756803,
+    "precision": 0.7966982092532399,
+    "pixel_accuracy": 0.9638703463520212,
+    "dice_std": 0.240552421723869,
+    "iou_std": 0.25423461711239176,
+    "dice_image_bootstrap_95ci": [
+      0.735167777992964,
+      0.7718736589446372
+    ],
+    "elapsed_training_seconds": 703.6741828000013,
+    "epochs": 30,
+    "threshold": 0.5
+  },
+  {
+    "name": "C_augmentation_dice",
+    "best_epoch": 28,
+    "validation_dice": 0.7684859037399292,
+    "test_samples": 614,
+    "dice": 0.7844765957699731,
+    "iou": 0.6841937488472811,
+    "recall": 0.8453175292778092,
+    "precision": 0.7899950740598021,
+    "pixel_accuracy": 0.9646529456303252,
+    "dice_std": 0.2079122883655069,
+    "iou_std": 0.23154003081024316,
+    "dice_image_bootstrap_95ci": [
+      0.767576120441919,
+      0.8002831235943599
+    ],
+    "elapsed_training_seconds": 704.3583118999959,
+    "epochs": 30,
+    "threshold": 0.5
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "python.defaultInterpreterPath": "D:\\Anaconda\\envs\\pytorch_learning\\python.exe",
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}"
+  ],
+  "python.terminal.activateEnvironment": false
+}

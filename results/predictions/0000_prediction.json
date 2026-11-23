@@ -1,0 +1,11 @@
+{
+  "input": "E:\\Codex project\\\u7532\u72b6\u817a\u8d85\u58f0CNN\u5b9e\u6218\u9879\u76ee\\data\\raw\\TN3K\\test-image\\0000.jpg",
+  "output": "E:\\Codex project\\\u7532\u72b6\u817a\u8d85\u58f0CNN\u5b9e\u6218\u9879\u76ee\\results\\predictions",
+  "original_size": [
+    365,
+    332
+  ],
+  "predicted_area_pixels": 3527,
+  "checkpoint_epoch": 28,
+  "threshold": 0.5
+}

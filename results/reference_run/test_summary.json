@@ -1,0 +1,20 @@
+{
+  "name": "C_augmentation_dice",
+  "best_epoch": 28,
+  "validation_dice": 0.7684859037399292,
+  "test_samples": 614,
+  "dice": 0.7844765957699731,
+  "iou": 0.6841937488472811,
+  "recall": 0.8453175292778092,
+  "precision": 0.7899950740598021,
+  "pixel_accuracy": 0.9646529456303252,
+  "dice_std": 0.2079122883655069,
+  "iou_std": 0.23154003081024316,
+  "dice_image_bootstrap_95ci": [
+    0.767576120441919,
+    0.8002831235943599
+  ],
+  "elapsed_training_seconds": 704.3583118999959,
+  "epochs": 30,
+  "threshold": 0.5
+}
