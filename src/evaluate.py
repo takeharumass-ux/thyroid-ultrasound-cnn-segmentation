@@ -1,3 +1,5 @@
+"""使用已训练模型在 TN3K 测试集上计算分割指标并保存结果。"""
+
 from pathlib import Path
 import csv
 import json

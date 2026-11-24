@@ -1,3 +1,5 @@
+"""对单张甲状腺超声图像进行推理，并输出 mask、叠加图和 JSON 记录。"""
+
 from pathlib import Path
 import json
 import numpy as np

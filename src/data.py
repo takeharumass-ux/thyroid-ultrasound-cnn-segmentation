@@ -1,3 +1,9 @@
+"""数据准备和 PyTorch 数据加载。
+
+负责读取 TN3K 原始图像及 mask，按保持宽高比的方式缩放到统一尺寸，保存
+可复用的预处理缓存，并为训练、验证、测试阶段创建 DataLoader。
+"""
+
 from pathlib import Path
 import json
 import numpy as np
