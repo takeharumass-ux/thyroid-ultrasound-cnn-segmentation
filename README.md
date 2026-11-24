@@ -27,7 +27,6 @@ U-Net 不是与 CNN 并列的另一类模型，而是一种专门面向图像分
 
 ### 本项目的 U-Net 结构示意图
 
-下面的结构图可以在 GitHub 中直接渲染：
 
 ```mermaid
 flowchart LR
