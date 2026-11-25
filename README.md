@@ -98,7 +98,7 @@ TN3K 已经完整放入 `data/raw/TN3K`，包含 3493 张图像和 3493 张对�
 
 ## 实验结果
 
-本项目使用 TN3K 的固定训练/验证/测试划分，测试集共 614 张图像，输入统一缩放到 `192×192`，预测阈值为 `0.5`。下面的结果来自 `results/reference_run/comparison.json` 和 `results/evaluation_C/summary.json`。
+本项目使用 TN3K 的固定训练/验证/测试划分，测试集共 614 张图像，输入统一缩放到 `192×192`，预测阈值为 `0.5`。下面的结果来自 `results/reference_run/metrics/comparison.json` 和 `results/evaluation_C/summary.json`。
 
 | 实验 | 设置 | 最佳轮次 | 验证集 Dice | 测试集 Dice | IoU | Recall | Precision | Pixel Accuracy |
 |---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -113,21 +113,50 @@ TN3K 已经完整放入 `data/raw/TN3K`，包含 3493 张图像和 3493 张对�
 - Pixel Accuracy 较高并不等于分割一定准确，因为背景像素通常占比较大，所以本项目同时报告 Dice、IoU、Recall 和 Precision。
 - 以上结果是课程实验数据集上的模型表现，不应直接解释为临床诊断能力；还需要更多独立数据和医学验证。
 
+### 训练过程曲线
+
+训练阶段使用训练集和验证集监控模型。测试集只在训练完成后进行最终评价，因此不把测试集指标逐轮画进训练曲线，避免测试集参与模型选择。对于分割任务，Dice 和 IoU 比普通像素准确率更能反映结节区域的重叠质量。
+
+![A/B/C 训练过程曲线](results/reference_run/figures/training_curves.png)
+
+图中左侧是 C 组训练集/验证集 loss，中间是 C 组验证 Dice 和 IoU，右侧是 A/B/C 三组验证 Dice 对照。C 组验证 Dice 在第 28 轮达到最高，因此选择第 28 轮权重。
+
+如果重新训练并更新了逐轮记录，可以运行下面的命令重新生成图片：
+
+```powershell
+python src/plot_history.py
+```
+
 ### 已生成的可视化结果
 
-预测叠加示例位于 `results/predictions`：
+预测结果位于 `results/predictions`。下面用同一张测试图像 `0000.jpg` 展示完整流程：原始超声图、模型输出的二值 mask，以及叠加显示结果。
 
-![甲状腺超声结节预测叠加示例](results/predictions/sample_ultrasound_overlay.png)
+<table>
+  <tr>
+    <th>原始超声图</th>
+    <th>预测 mask</th>
+    <th>叠加结果</th>
+  </tr>
+  <tr>
+    <td><img src="data/raw/TN3K/test-image/0000.jpg" alt="原始超声图" width="260"></td>
+    <td><img src="results/predictions/0000_mask.png" alt="预测 mask" width="260"></td>
+    <td><img src="results/predictions/0000_overlay.png" alt="预测叠加结果" width="260"></td>
+  </tr>
+</table>
+
+`0000_prediction.json` 保存对应预测的尺寸、面积和模型轮次等信息。
 
 详细的逐图指标见 `results/evaluation_C/per_image.csv`，整体汇总见 `results/evaluation_C/summary.json`。
 
 ### 实验记录文件索引
 
 - `results/reference_run/comparison.md`：排版后的实验记录页面，建议老师优先阅读；
-- `results/reference_run/comparison_chart.svg`：A/B/C 的 Dice、IoU 指标对比图；
-- `results/reference_run/comparison.csv`：A、B、C 三组实验的汇总表；
-- `results/reference_run/comparison.json`：同一汇总结果的 JSON 格式；
-- `results/reference_run/test_summary.json`：最终选中的 C 组模型摘要；
+- `results/reference_run/figures/comparison_chart.svg`：A/B/C 的 Dice、IoU 指标对比图；
+- `results/reference_run/figures/training_curves.png`：逐轮训练曲线图；
+- `results/reference_run/history/*_history.csv`：A/B/C 三组逐轮训练原始记录；
+- `results/reference_run/metrics/comparison.csv`：A、B、C 三组实验的汇总表；
+- `results/reference_run/metrics/comparison.json`：同一汇总结果的 JSON 格式；
+- `results/reference_run/metrics/test_summary.json`：最终选中的 C 组模型摘要；
 - `results/evaluation_C/per_image.csv`：C 组测试集逐图指标。
 
 

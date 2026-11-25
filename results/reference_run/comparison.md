@@ -1,6 +1,6 @@
 # 实验记录：A/B/C 三组设置对比
 
-这份页面是给人阅读的实验摘要；原始机器可读记录仍保留在同目录的 `comparison.csv` 和 `comparison.json` 中。
+这份页面是给人阅读的实验摘要；原始机器可读记录保留在 `data` 子目录中。
 
 ## 实验条件
 
@@ -13,7 +13,17 @@
 
 ## 一眼看结果
 
-![A/B/C 测试集指标对比](comparison_chart.svg)
+![A/B/C 测试集指标对比](figures/comparison_chart.svg)
+
+### 训练过程曲线
+
+训练集和验证集曲线，以及三组实验的验证 Dice 对照如下。测试集只在训练完成后评价一次。
+
+![A/B/C 训练过程曲线](figures/training_curves.png)
+
+左图显示 C 组 loss，中图显示 C 组验证 Dice/IoU，右图显示 A/B/C 三组验证 Dice。C 组在第 28 轮取得最高验证 Dice。
+
+重新训练后可在项目根目录运行 `python src/plot_history.py` 更新图片。
 
 | 实验 | 主要设置 | 最佳轮次 | 验证集 Dice | 测试集 Dice | IoU | Recall | Precision | Pixel Accuracy |
 |---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -40,8 +50,10 @@
 
 ## 相关文件
 
-- `comparison.csv`：完整汇总表，便于程序读取；
-- `comparison.json`：同一结果的 JSON 版本；
-- `test_summary.json`：C 组最终模型摘要；
+- `metrics/comparison.csv`：完整汇总表，便于程序读取；
+- `metrics/comparison.json`：同一结果的 JSON 版本；
+- `metrics/test_summary.json`：C 组最终模型摘要；
+- `history/A_baseline_history.csv`、`history/B_augmentation_history.csv`、`history/C_augmentation_dice_history.csv`：三组逐轮训练记录；
+- `figures/training_curves.png`：由上述逐轮记录生成的曲线图；
 - `../evaluation_C/per_image.csv`：C 组 614 张测试图像的逐图指标；
 - `../../models/best_model.pt`：C 组最佳模型权重。
