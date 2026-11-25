@@ -27,7 +27,7 @@ U-Net 不是与 CNN 并列的另一类模型，而是一种专门面向图像分
 
 ### 本项目的 U-Net 结构示意图
 
-
+文献示意图unet_architecture.png
 ```mermaid
 flowchart LR
     I[输入灰度图<br/>1 × 192 × 192] --> E1[编码器 1<br/>2 个 3×3 Conv<br/>8 通道]
